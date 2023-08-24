@@ -69,3 +69,92 @@ let CustomerID = cid as number
 
 
 //Fuctions
+function AddNum(x:number,y:number):number{
+    return x + y //return a value of type number
+}
+//void
+function log(message: string | number):void{
+    console.log(message);
+}
+log(2) //can only accept string and numbers 
+ 
+//interfaces maps classes 
+
+interface UserInterface{
+    readonly id:number, //cannot be reassighned
+    name:string
+    age?:number //optional value
+}
+
+const user2: UserInterface={
+    id:1,
+    name:'John'
+}
+//interfaces in a function
+interface MathFunc{
+    (x:number,y:number):number
+}
+const add:MathFunc=(a:number,b:number):number => a + b;
+const sub:MathFunc=(a:number,b:number):number => a - b;
+//classes
+//Person class using an Interface
+interface PersonInterface{
+    readonly id:number, //cannot be reassighned
+    name:string
+    register():string
+}
+class Person1 implements PersonInterface{
+    public id:number
+    name:string
+    //constructor
+    constructor(id:number,name:string){
+        this.id=id
+        this.name=name
+    }
+    //method
+    register(){
+        return `${this.name} is now registered`
+    }
+}
+//parentClass
+class Person{
+    //access modifiers can be private,public and protected
+   public id:number
+    name:string
+    //constructor
+    constructor(id:number,name:string){
+        this.id=id
+        this.name=name
+    }
+    //method
+    register(){
+        return `${this.name} is now registered`
+    }
+}
+const James= new Person(1,"James Kamau")
+//sub class or Child Class
+class Employee extends Person{
+    position: string
+
+    constructor(id:number, name:string, position:string){
+        super(id,name)
+        this.position=position
+    }
+}
+const emp = new Employee(2, "Ken","Developer")
+emp.register();
+//Generics 
+function getArray(items: any[]):any[]{
+return new Array().concat(items)
+}
+let numArray = getArray([1,2,3,4,5])
+let strArray= getArray(['Jackie','Miranda','Johannes'])
+numArray.push('hello')//can push a string to an array of numbers
+//a generic function
+function getArray2<T>(items: T[]):T[]{
+    return new Array().concat(items)
+    }
+    let numArray2 = getArray2([1,2,3,4,5])
+    let strArray3= getArray2(['Jackie','Miranda','Johannes'])
+   // numArray2.push('hello') -- cannot push a string into an numbers array
+    //strArray3.push(5) -- cannot push a number into a strings array

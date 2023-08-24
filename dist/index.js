@@ -51,3 +51,65 @@ let customerId = cid; //implicitly defines customer id into a number and cannot 
 //alternatively you can assert the type like this....
 let CustomerID = cid;
 //Fuctions
+function AddNum(x, y) {
+    return x + y; //return a value of type number
+}
+//void
+function log(message) {
+    console.log(message);
+}
+log(2); //can only accept string and numbers 
+const user2 = {
+    id: 1,
+    name: 'John'
+};
+const add = (a, b) => a + b;
+const sub = (a, b) => a - b;
+class Person1 {
+    //constructor
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+    //method
+    register() {
+        return `${this.name} is now registered`;
+    }
+}
+//parentClass
+class Person {
+    //constructor
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+    //method
+    register() {
+        return `${this.name} is now registered`;
+    }
+}
+const James = new Person(1, "James Kamau");
+//sub class or Child Class
+class Employee extends Person {
+    constructor(id, name, position) {
+        super(id, name);
+        this.position = position;
+    }
+}
+const emp = new Employee(2, "Ken", "Developer");
+emp.register();
+//Generics 
+function getArray(items) {
+    return new Array().concat(items);
+}
+let numArray = getArray([1, 2, 3, 4, 5]);
+let strArray = getArray(['Jackie', 'Miranda', 'Johannes']);
+numArray.push('hello'); //can push a string to an array of numbers
+//a generic function
+function getArray2(items) {
+    return new Array().concat(items);
+}
+let numArray2 = getArray2([1, 2, 3, 4, 5]);
+let strArray3 = getArray2(['Jackie', 'Miranda', 'Johannes']);
+// numArray2.push('hello') -- cannot push a string into an numbers array
+//strArray3.push(5) -- cannot push a number into a strings array
